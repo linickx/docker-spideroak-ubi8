@@ -1,0 +1,24 @@
+version: '2'
+services:
+
+  SpiderOakOne:
+    build:
+      dockerfile: Dockerfile
+      context: ../
+    image: spideroakone
+    container_name: spideroakone-1
+
+  SpiderOakTwo:
+    build:
+      dockerfile: Dockerfile
+      context: ../
+    image: spideroakone
+    container_name: spideroakone-2
+    environment:
+        TZ : "Europe/London"
+        DEVICE_NAME : "Test_Container"
+        USERNAME: "nick"
+        PASSWORD: "password"
+    volumes:
+      - ./config:/spideroak/.config
+      - ./test:/home/test
