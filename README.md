@@ -32,4 +32,4 @@ If you really don't like ENV VARS then you have a couple of further choices, eit
 
 ## SpiderOak CLI Parameters
 
-By default, SpiderOakOne starts with `-v --headless` if you want to do something else like `--batchmode` then set the environment variable `$HEADLESS_PARAMETERS`
+By default, SpiderOakOne starts with `--headless` if you want to do something else like `--batchmode` then set the environment variable `$HEADLESS_PARAMETERS`
