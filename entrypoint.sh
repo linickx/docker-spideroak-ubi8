@@ -30,7 +30,7 @@ do
     echo
     echo " Thenm, from your container, run..."
     echo "   SpiderOakONE --setup=-"
-    echo 
+    echo
     echo " See SpiderOak Support for Headless Setup details:"
     echo "  https://spideroak.support/hc/en-us/articles/115001893283--setup"
     echo
@@ -46,6 +46,10 @@ if [ ! -f "/spideroak/.config/SpiderOakONE/.docker.firstrun" ]; then
     sleep 60
 fi
 
+if [ -z "${HEADLESS_PARAMETERS}" ]; then
+    HEADLESS_PARAMETERS="-v --headless"
+fi
+
 # We're all setup, start backups!
-echo "$(date +"%m-%d-%Y %T") | Starting SpiderOakONE Backups..."
-SpiderOakONE --headless
+echo "$(date +"%m-%d-%Y %T") | Starting SpiderOakONE Backups with: SpiderOakONE $HEADLESS_PARAMETERS..."
+SpiderOakONE "$HEADLESS_PARAMETERS"
