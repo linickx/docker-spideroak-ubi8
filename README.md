@@ -30,7 +30,6 @@ Environment variables can be exposed on docker hosts with the `inspect` command,
 
 If you really don't like ENV VARS then you have a couple of further choices, either get a shell and run the setup command manually, or create & mount `/spideroak/config.json` [manually](https://spideroak.support/hc/en-us/articles/115001893283--setup)
 
-### Todo
+## SpiderOak CLI Parameters
 
-* The `--headless` command isn't that verbose, add log tail or `--batchmode`
-* Make image smaller?!
+By default, SpiderOakOne starts with `-v --headless` if you want to do something else like `--batchmode` then set the environment variable `$HEADLESS_PARAMETERS`
