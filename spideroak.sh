@@ -47,7 +47,7 @@ if [ ! -f "/spideroak/.config/SpiderOakONE/.docker.firstrun" ]; then
 fi
 
 if [ -z "${HEADLESS_PARAMETERS}" ]; then
-    HEADLESS_PARAMETERS="-v --headless"
+    HEADLESS_PARAMETERS="--headless"
 fi
 
 # We're all setup, start backups!
