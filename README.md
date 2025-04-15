@@ -35,3 +35,11 @@ If you really don't like ENV VARS then you have a couple of further choices, eit
 ## SpiderOak CLI Parameters
 
 By default, SpiderOakOne starts with `--headless` if you want to do something else like `--batchmode` then set the environment variable `$HEADLESS_PARAMETERS`
+
+## Quit for One-Shot Parameters
+
+There are CLI commands you may wish to run just once, like `--repar` or `--rebuild-reference-database` depending on your docker/podman/systemd setup you may find the container is accidentally restarted after it is run and therefore runs again, and again, and again.
+
+To help prevent this you can set the environment variable `$QUIT` to any value (_yes, true, whatever_), this will create a file `/spideroak/.config/SpiderOakONE/.docker.quit` causing the container to quit when it starts up. By default the container will wait for 600 seconds before exiting allowing some time to connect a terminal if needed. If you wish to extend the sleep time set the environment variable `$QUIT_SLEEP` to whatever number of seconds you need.
+
+When you want the container to go back to normal operations, remove `/spideroak/.config/SpiderOakONE/.docker.quit`.

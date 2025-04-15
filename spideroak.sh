@@ -50,6 +50,11 @@ if [ -z "${HEADLESS_PARAMETERS}" ]; then
     HEADLESS_PARAMETERS="--headless"
 fi
 
+if [ -n "${QUIT}" ] || [ -n "${QUIT_SLEEP}" ]; then
+    touch "/spideroak/.config/SpiderOakONE/.docker.quit"
+    echo "$(date +"%m-%d-%Y %T") | Environment variable QUIT or QUIT_SLEEP detected. Created .docker.quit."
+fi
+
 # We're all setup, start backups!
 echo "$(date +"%m-%d-%Y %T") | Starting SpiderOakONE Backups with: SpiderOakONE $HEADLESS_PARAMETERS..."
 SpiderOakONE "$HEADLESS_PARAMETERS"
