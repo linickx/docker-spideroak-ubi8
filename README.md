@@ -28,7 +28,9 @@ The `docs` directory has an example docker-compose, both a simple and more advan
 
 Environment variables can be exposed on docker hosts with the `inspect` command, SpiderOak doesn't need the password each time, after initial setup everything is stored in the `/spideroak/.config` directory.
 
-If you really don't like ENV VARS then you have a couple of further choices, either get a shell and run the setup command manually, or create & mount `/spideroak/config.json` [manually](https://spideroak.support/hc/en-us/articles/115001893283--setup)
+If you really don't like ENV VARS then you have a couple of further choices, either get a shell and run the setup command manually, or create & mount `/spideroak/config.json` [manually](https://spideroak.support/hc/en-us/articles/115001893283--setup), run the setup as the spideroak user, like this:
+
+    su - spideroak -c "SpiderOakONE --setup=config.json"
 
 ## SpiderOak CLI Parameters
 
