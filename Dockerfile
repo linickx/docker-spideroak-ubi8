@@ -14,7 +14,7 @@ RUN rpm --import /root/spideroak-rpm-2011.asc
 
 # Download the latest Binary
 RUN cd /root && \
-    curl --remote-header-name --remote-name https://spideroak-releases.s3.us-east-2.amazonaws.com/SpiderOakONE.7.5.0.1.x86_64.rpm
+    curl --remote-header-name --remote-name https://spideroak-releases.s3.us-east-2.amazonaws.com/SpiderOak-7.5.2-1.el7.x86_64.rpm
 
 # Only install, if the GPG Key/Signature is valid
 RUN rpm -K /root/SpiderOakONE.*.rpm && \
