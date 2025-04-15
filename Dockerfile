@@ -17,8 +17,8 @@ RUN cd /root && \
     curl --remote-header-name --remote-name https://spideroak-releases.s3.us-east-2.amazonaws.com/SpiderOak-7.5.2-1.el7.x86_64.rpm
 
 # Only install, if the GPG Key/Signature is valid
-RUN rpm -K /root/SpiderOakONE.*.rpm && \
-    rpm -ivh /root/SpiderOakONE.*.rpm
+RUN rpm -K /root/SpiderOak-*.rpm && \
+    rpm -ivh /root/SpiderOak-*.rpm
 
 # https://spideroak.support/hc/en-us/articles/115004777903-Running-as-Root-on-Linux
 RUN groupadd --gid 1001 spideroak && \
