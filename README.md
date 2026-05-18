@@ -43,3 +43,7 @@ There are CLI commands you may wish to run just once, like `--repar` or `--rebui
 To help prevent this you can set the environment variable `$QUIT` to any value (_yes, true, whatever_), this will create a file `/spideroak/.config/SpiderOakONE/.docker.quit` causing the container to quit when it starts up. By default the container will wait for 600 seconds before exiting allowing some time to connect a terminal if needed. If you wish to extend the sleep time set the environment variable `$QUIT_SLEEP` to whatever number of seconds you need.
 
 When you want the container to go back to normal operations, remove `/spideroak/.config/SpiderOakONE/.docker.quit`.
+
+## Delayed Start-up
+
+Starting spideroak can be quite resource intensive, setting the environment variable `$START_SLEEP` to `60` will delay spideroak from starting for 60s, this allows the container to start quickly without hammering your CPU/Memory straight away.

@@ -55,6 +55,11 @@ if [ -n "${QUIT}" ] || [ -n "${QUIT_SLEEP}" ]; then
     echo "$(date +"%m-%d-%Y %T") | Environment variable QUIT or QUIT_SLEEP detected. Created .docker.quit."
 fi
 
+if [ -n "${START_SLEEP}" ]; then
+    echo "$(date +"%m-%d-%Y %T") | Sleeping for $START_SLEEP before running spideroak..."
+    sleep "$START_SLEEP"
+fi
+
 # We're all setup, start backups!
 echo "$(date +"%m-%d-%Y %T") | Starting SpiderOakONE Backups with: SpiderOakONE $HEADLESS_PARAMETERS..."
 SpiderOakONE "$HEADLESS_PARAMETERS"
