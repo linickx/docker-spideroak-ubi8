@@ -9,20 +9,26 @@ on:
         default: 'No message provided'
 jobs:
   build:
+    name: Build & Publish
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name: ["ubi8", "ubi10", "trixie"]
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-    - run: |
-          echo "Webhook Msg -- ${{ inputs.message }}"
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile -t ${{ vars.DOCKERHUB_USERNAME }}/spideroak-ubi8:latest
-    - name: Login to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ vars.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Push Docker image
-      run: docker push ${{ vars.DOCKERHUB_USERNAME }}/spideroak-ubi8:latest
-    - name: Logout from Docker Hub
-      run: docker logout
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - run: |
+             if [[ "${{ matrix.name }}" == "trixie" ]]; then
+             cat spideroak-deb-2016.asc | gpg --dearmor | tee spideroak.gpg > /dev/null
+             fi
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile.${{ matrix.name }} -t ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push Docker image
+        run: docker push ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
+      - name: Logout from Docker Hub
+        run: docker logout
