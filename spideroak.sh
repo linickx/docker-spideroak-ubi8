@@ -9,7 +9,7 @@ echo "$(date +"%m-%d-%Y %T") | Device Name: $DEVICE_NAME"
 # Set Credz via Env' Vars...
 if [ ! -z "${USERNAME}" ] && [ ! -z "${PASSWORD}" ];then
     echo "$(date +"%m-%d-%Y %T") | Writing Credentials to /spideroak/config.json"
-    jq --arg key0 'username' --arg value0 $USERNAME --arg key1 'password' --arg value1 $PASSWORD --arg key2 'device_name' --arg value2 $DEVICE_NAME '. | .[$key0]=$value0 | .[$key1]=$value1 | .[$key2]=$value2'  <<<'{}' > /spideroak/config.json
+    jq --arg key0 'username' --arg value0 "$USERNAME" --arg key1 'password' --arg value1 "$PASSWORD" --arg key2 'device_name' --arg value2 "$DEVICE_NAME" '. | .[$key0]=$value0 | .[$key1]=$value1 | .[$key2]=$value2'  <<<'{}' > /spideroak/config.json
 fi
 
 # No Credz, No config, wait & loop..
@@ -21,7 +21,7 @@ do
         SpiderOakONE --setup=/spideroak/config.json
     fi
 
-    echo "$(date +"%m-%d-%Y %T")"
+    date +"%m-%d-%Y %T"
     echo "-------------------------------------------------------------------"
     echo " SpiderOakONE has not been configured."
     echo
