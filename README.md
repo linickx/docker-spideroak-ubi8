@@ -1,4 +1,4 @@
-# docker-spideroak-ubi8
+# docker-spideroak
 A Docker Container for SpiderOakONE
 
 AKA: Yet another SpiderOakOne Container, a version with a few personal preferences 😝
