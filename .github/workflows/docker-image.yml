@@ -17,7 +17,7 @@ jobs:
         name: ["ubi8", "ubi10", "trixie"]
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - run: |
              if [[ "${{ matrix.name }}" == "trixie" ]]; then
              cat spideroak-deb-2016.asc | gpg --dearmor | tee spideroak.gpg > /dev/null
@@ -25,7 +25,7 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile.${{ matrix.name }} -t ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
       - name: Login to DockerHub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
