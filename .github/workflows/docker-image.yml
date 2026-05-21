@@ -26,6 +26,13 @@ jobs:
         run: docker build . --file Dockerfile.${{ matrix.name }} -t ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
       - name: Test the image
         run: docker run --rm --entrypoint=/usr/bin/SpiderOakONE ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest --version
+      - name: Scan image
+        uses: anchore/scan-action@v7
+        with:
+          image: ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
+          fail-build: false
+          output-format: table
+          output-file: grype.txt
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
@@ -41,7 +48,7 @@ jobs:
             echo "---" >> "SCAN.${{ matrix.name }}.md"
             echo '```' >> "SCAN.${{ matrix.name }}.md"
             cat grype.txt >> "SCAN.${{ matrix.name }}.md"
-            echo '````' >> "SCAN.${{ matrix.name }}.md"
+            echo '```' >> "SCAN.${{ matrix.name }}.md"
       - run: rm -f grype.txt
       - name: Upload SBOM & SCAN to git
         run: |
