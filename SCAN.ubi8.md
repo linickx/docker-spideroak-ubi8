@@ -7,7 +7,7 @@ To help give users and idea of what the latest dockerhub build/images looks like
 The scanner uses [Grype](https://github.com/anchore/grype/) within a [Github Scan Action](https://github.com/anchore/scan-action) 
 
 ---
-05-21-2026 19:46:04
+05-21-2026 19:54:08
 ---
 ```
 NAME                    INSTALLED            FIXED IN     TYPE    VULNERABILITY        SEVERITY  EPSS           RISK   
