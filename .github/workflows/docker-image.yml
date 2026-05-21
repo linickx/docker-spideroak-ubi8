@@ -24,12 +24,42 @@ jobs:
              fi
       - name: Build the Docker image
         run: docker build . --file Dockerfile.${{ matrix.name }} -t ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
+      - name: Test the image
+        run: docker run --rm -ti --entrypoint=/usr/bin/SpiderOakONE ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest --version
+      - name: Create SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
+          format: spdx-json
+          output-file: SBOM.{{ matrix.name }}.spdx.json
+      - name: Write SCAN Report
+        run: |
+            cat .github/SCAN-Template.md > "SCAN.${{ matrix.name }}.md"
+            echo >> "SCAN.${{ matrix.name }}.md"
+            echo "---" >> "SCAN.${{ matrix.name }}.md"
+            date +'%m-%d-%Y %T' >> "SCAN.${{ matrix.name }}.md"
+            echo "---" >> "SCAN.${{ matrix.name }}.md"
+            echo '```' >> "SCAN.${{ matrix.name }}.md"
+            cat grype.txt >> "SCAN.${{ matrix.name }}.md"
+            echo '````' >> "SCAN.${{ matrix.name }}.md"
+      - run: rm -f grype.txt
+      - name: Upload SBOM & SCAN to git
+        run: |
+            git config --global user.name "${{ github.actor }}"
+            git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+            git add "SCAN.${{ matrix.name }}.md" "SBOM.${{ matrix.name }}.spdx.json"
+            git commit -m "SBOM & SCAN Report $(date +'%m-%d-%Y %T')"
+            git push
+      - name: SBOM upload to GitHub API
+        uses: advanced-security/spdx-dependency-submission-action@v0.2.0
+        with:
+          filePath: ./
       - name: Login to DockerHub
         uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Push Docker image
-        run: docker push ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
+      # - name: Push Docker image
+      #   run: docker push ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
       - name: Logout from Docker Hub
         run: docker logout
