@@ -38,7 +38,7 @@ jobs:
         with:
           image: ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
           format: spdx-json
-          output-file: SBOM.{{ matrix.name }}.spdx.json
+          output-file: SBOM.${{ matrix.name }}.spdx.json
       - name: Write SCAN Report
         run: |
             cat .github/SCAN-Template.md > "SCAN.${{ matrix.name }}.md"
