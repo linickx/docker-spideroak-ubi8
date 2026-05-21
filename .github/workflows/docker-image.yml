@@ -11,11 +11,11 @@ jobs:
   build:
     name: Build & Publish
     runs-on: ubuntu-latest
-    #continue-on-error: true
-    fail-fast: false
+    # continue-on-error: true
     strategy:
       matrix:
         name: ["ubi8", "ubi10", "trixie"]
+      fail-fast: false
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v6
