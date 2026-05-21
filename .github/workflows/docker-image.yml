@@ -54,6 +54,7 @@ jobs:
         run: |
             git config --global user.name "${{ github.actor }}"
             git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+            git pull
             git add "SCAN.${{ matrix.name }}.md" "SBOM.${{ matrix.name }}.spdx.json"
             git commit -m "SBOM & SCAN Report $(date +'%m-%d-%Y %T')"
             git push
