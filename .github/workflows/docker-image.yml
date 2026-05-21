@@ -25,7 +25,7 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile.${{ matrix.name }} -t ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest
       - name: Test the image
-        run: docker run --rm -ti --entrypoint=/usr/bin/SpiderOakONE ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest --version
+        run: docker run --rm --entrypoint=/usr/bin/SpiderOakONE ${{ vars.DOCKERHUB_USERNAME }}/spideroak-${{ matrix.name }}:latest --version
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
