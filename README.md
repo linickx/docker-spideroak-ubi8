@@ -9,7 +9,7 @@ This image comes in a few flavours
 
 - [Redhat UBI](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image), which is based on Redhat Enterprise Linux. RHEL is a very slow, very stable version of linux.
     - https://hub.docker.com/r/linickx/spideroak-ubi8
-    - https://hub.docker.com/r/linickx/spideroak-ubi10 (☣️ Work in Progress ☣️)
+    - https://hub.docker.com/r/linickx/spideroak-ubi10  [SEE ISSUE #1 BEFORE USING](https://github.com/linickx/docker-spideroak/issues/1)
 - Debian, is also well known for it's slow & stable release cycle.
     - https://hub.docker.com/r/linickx/spideroak-trixie
 ... slow and stable something you want in backup software!
