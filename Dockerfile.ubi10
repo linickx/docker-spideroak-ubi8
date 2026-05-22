@@ -8,17 +8,28 @@ RUN microdnf install -y jq shadow-utils util-linux procps-ng
 COPY entrypoint.sh /entrypoint.sh
 COPY spideroak.sh /spideroak.sh
 
+#
+# WARNING - RPM Key too Old to import to EL 10
+#
+# SEE -> https://github.com/linickx/docker-spideroak/issues/1
+#
 # SpiderOak's RPM Signing Key: https://spideroak.support/hc/en-us/articles/360000153906-RPM-Signing-Key
-COPY spideroak-rpm-2011.asc /root/spideroak-rpm-2011.asc
-RUN rpm --import /root/spideroak-rpm-2011.asc
+#COPY spideroak-rpm-2011.asc /root/spideroak-rpm-2011.asc
+#RUN rpm --import /root/spideroak-rpm-2011.asc
 
 # Download the latest Binary
 RUN cd /root && \
     curl --remote-header-name --remote-name https://spideroak-releases.s3.us-east-2.amazonaws.com/SpiderOak-7.5.2-1.el7.x86_64.rpm
 
-# Only install, if the GPG Key/Signature is valid
-RUN rpm -K /root/SpiderOak-*.rpm && \
-    rpm -ivh /root/SpiderOak-*.rpm
+#
+# WARNING DANGER -- Cannot Validate Signature!
+#
+## Only install, if the GPG Key/Signature is valid
+#RUN rpm -K /root/SpiderOak-*.rpm && \
+#    rpm -ivh /root/SpiderOak-*.rpm
+#
+# SEE -> https://github.com/linickx/docker-spideroak/issues/1
+RUN rpm -ivh --noverify /root/SpiderOak-*.rpm
 
 # https://spideroak.support/hc/en-us/articles/115004777903-Running-as-Root-on-Linux
 RUN groupadd --gid 1001 spideroak && \
