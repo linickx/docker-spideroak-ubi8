@@ -51,10 +51,18 @@ jobs:
             cat grype.txt >> "SCAN.${{ matrix.name }}.md"
             echo '```' >> "SCAN.${{ matrix.name }}.md"
       - run: rm -f grype.txt
+      - name: Sleep to avoid git clashes
+        run: |
+             if [[ "${{ matrix.name }}" == "trixie" ]]; then
+             sleep 10
+             elif [[ "${{ matrix.name }}" == "ubi10" ]]; then
+             sleep 20
+             fi
       - name: Upload SBOM & SCAN to git
         run: |
             git config --global user.name "${{ github.actor }}"
             git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+            git config pull.rebase true
             git pull
             git add "SCAN.${{ matrix.name }}.md" "SBOM.${{ matrix.name }}.spdx.json"
             git commit -m "SBOM & SCAN Report $(date +'%m-%d-%Y %T')"
