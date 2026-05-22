@@ -7,7 +7,7 @@ To help give users and idea of what the latest dockerhub build/images looks like
 The scanner uses [Grype](https://github.com/anchore/grype/) within a [Github Scan Action](https://github.com/anchore/scan-action) 
 
 ---
-05-21-2026 19:54:05
+05-22-2026 08:57:05
 ---
 ```
 NAME           INSTALLED                    FIXED IN     TYPE    VULNERABILITY        SEVERITY    EPSS           RISK   
@@ -108,8 +108,8 @@ coreutils      9.7-3                                     deb     CVE-2017-18018 
 libsqlite3-0   3.46.1-7+deb13u1                          deb     CVE-2025-70873       Negligible  < 0.1% (16th)  < 0.1  
 libsystemd0    257.13-1~deb13u1                          deb     CVE-2013-4392        Negligible  < 0.1% (12th)  < 0.1  
 libudev1       257.13-1~deb13u1                          deb     CVE-2013-4392        Negligible  < 0.1% (12th)  < 0.1  
-jq             1.7.1-6+deb13u2                           deb     CVE-2025-9403        Negligible  < 0.1% (10th)  < 0.1  
-libjq1         1.7.1-6+deb13u2                           deb     CVE-2025-9403        Negligible  < 0.1% (10th)  < 0.1  
+jq             1.7.1-6+deb13u2                           deb     CVE-2025-9403        Negligible  < 0.1% (11th)  < 0.1  
+libjq1         1.7.1-6+deb13u2                           deb     CVE-2025-9403        Negligible  < 0.1% (11th)  < 0.1  
 bsdutils       1:2.41-5                                  deb     CVE-2022-0563        Negligible  < 0.1% (7th)   < 0.1  
 libblkid1      2.41-5                                    deb     CVE-2022-0563        Negligible  < 0.1% (7th)   < 0.1  
 liblastlog2-2  2.41-5                                    deb     CVE-2022-0563        Negligible  < 0.1% (7th)   < 0.1  
@@ -133,4 +133,5 @@ util-linux     2.41-5                                    deb     CVE-2025-14104 
 idna           2.8                          3.15         python  GHSA-65pc-fj4g-8rjx  Medium      N/A            N/A    
 cryptography   2.4.2                        41.0.0       python  GHSA-5cpq-8wj7-hf2v  Low         N/A            N/A    
 cryptography   2.4.2                        41.0.3       python  GHSA-jm77-qphf-c4w8  Low         N/A            N/A    
+perl-base      5.40.1-6                     (won't fix)  deb     CVE-2026-8376        Unknown     N/A            N/A    
 ```
