@@ -7,7 +7,7 @@ To help give users and idea of what the latest dockerhub build/images looks like
 The scanner uses [Grype](https://github.com/anchore/grype/) within a [Github Scan Action](https://github.com/anchore/scan-action) 
 
 ---
-05-21-2026 19:54:08
+05-22-2026 08:57:08
 ---
 ```
 NAME                    INSTALLED            FIXED IN     TYPE    VULNERABILITY        SEVERITY  EPSS           RISK   
@@ -153,6 +153,7 @@ glibc-common            2.28-251.el8_10.34                rpm     CVE-2026-4438 
 glibc-minimal-langpack  2.28-251.el8_10.34                rpm     CVE-2026-4438        Low       < 0.1% (17th)  < 0.1  
 curl                    7.61.1-34.el8_10.11               rpm     CVE-2025-14524       Low       < 0.1% (12th)  < 0.1  
 libcurl                 7.61.1-34.el8_10.11               rpm     CVE-2025-14524       Low       < 0.1% (12th)  < 0.1  
+libsolv                 0.7.20-6.el8                      rpm     CVE-2026-9149        Medium    < 0.1% (9th)   < 0.1  
 curl                    7.61.1-34.el8_10.11               rpm     CVE-2026-3805        Medium    < 0.1% (8th)   < 0.1  
 libcurl                 7.61.1-34.el8_10.11               rpm     CVE-2026-3805        Medium    < 0.1% (8th)   < 0.1  
 sqlite-libs             3.26.0-20.el8_10                  rpm     CVE-2025-70873       Low       < 0.1% (16th)  < 0.1  
@@ -176,7 +177,7 @@ libcurl                 7.61.1-34.el8_10.11               rpm     CVE-2026-3783 
 libarchive              3.3.3-7.el8_10       (won't fix)  rpm     CVE-2025-25724       Medium    < 0.1% (8th)   < 0.1  
 libarchive              3.3.3-7.el8_10                    rpm     CVE-2025-60753       Medium    < 0.1% (6th)   < 0.1  
 gnutls                  3.6.16-8.el8_10.5                 rpm     CVE-2026-3832        Low       < 0.1% (10th)  < 0.1  
-jq                      1.6-12.el8_10        (won't fix)  rpm     CVE-2025-9403        Low       < 0.1% (10th)  < 0.1  
+jq                      1.6-12.el8_10        (won't fix)  rpm     CVE-2025-9403        Low       < 0.1% (11th)  < 0.1  
 pyopenssl               18.0.0               26.0.0       python  GHSA-vp96-hxj8-p424  Low       < 0.1% (12th)  < 0.1  
 openssl-libs            1:1.1.1k-15.el8_6                 rpm     CVE-2025-68160       Low       < 0.1% (7th)   < 0.1  
 jq                      1.6-12.el8_10                     rpm     CVE-2026-43895       Medium    < 0.1% (5th)   < 0.1  
@@ -210,6 +211,7 @@ curl                    7.61.1-34.el8_10.11               rpm     CVE-2025-13034
 libcurl                 7.61.1-34.el8_10.11               rpm     CVE-2025-13034       Medium    < 0.1% (1st)   < 0.1  
 cryptography            2.4.2                46.0.5       python  GHSA-r6ph-v2qm-q3c2  High      < 0.1% (0th)   < 0.1  
 sqlite-libs             3.26.0-20.el8_10                  rpm     CVE-2024-0232        Low       < 0.1% (4th)   < 0.1  
+libsolv                 0.7.20-6.el8                      rpm     CVE-2026-9150        Medium    < 0.1% (1st)   < 0.1  
 gnupg2                  2.2.20-4.el8_10                   rpm     CVE-2022-3219        Low       < 0.1% (3rd)   < 0.1  
 jq                      1.6-12.el8_10                     rpm     CVE-2026-40612       Medium    < 0.1% (2nd)   < 0.1  
 jq                      1.6-12.el8_10                     rpm     CVE-2026-41257       Medium    < 0.1% (2nd)   < 0.1  
@@ -237,8 +239,6 @@ libssh                  0.9.6-16.el8_10                   rpm     CVE-2026-0965 
 libssh-config           0.9.6-16.el8_10                   rpm     CVE-2026-0965        Low       < 0.1% (0th)   < 0.1  
 glib2                   2.56.4-169.el8_10                 rpm     CVE-2026-1485        Low       < 0.1% (0th)   < 0.1  
 idna                    2.8                  3.15         python  GHSA-65pc-fj4g-8rjx  Medium    N/A            N/A    
-libsolv                 0.7.20-6.el8                      rpm     CVE-2026-9149        Medium    N/A            N/A    
-libsolv                 0.7.20-6.el8                      rpm     CVE-2026-9150        Medium    N/A            N/A    
 cryptography            2.4.2                41.0.0       python  GHSA-5cpq-8wj7-hf2v  Low       N/A            N/A    
 cryptography            2.4.2                41.0.3       python  GHSA-jm77-qphf-c4w8  Low       N/A            N/A    
 ```
